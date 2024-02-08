@@ -1,0 +1,25 @@
+﻿@model Movie
+@{
+    ViewBag.Title = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<link rel="stylesheet" href="~/css/Estilo/Movie.css">
+<div class="row">
+    <h4 class="mt-4 mb-5"><strong>LISTA DE PELICULAS</strong></h4>
+    @foreach (Movie movie in Model.Movies)
+    {
+        <div class="col-4">
+            <div class="container">
+                <div class="card" id="movie1">
+                    <img src="@movie.Poster" alt="Película 1">
+                    <div class="overlay">
+                        <h3>@movie.Nombre</h3>
+                        <p>@movie.Descripcion</p>
+                        <a class="btn-favorite" href="@Url.Action("Add", "Movie", new {IdPelicula= movie.Id})">Agregar a favoritos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
